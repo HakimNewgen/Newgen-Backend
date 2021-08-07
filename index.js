@@ -13,6 +13,8 @@ const questionRouter = require('./routes/question')
 
 var cors = require('cors')
 
+const port = process.env.PORT || 5000
+
 app.use(cors())
 
 const mongoose= require('mongoose')
@@ -66,4 +68,4 @@ app.use('/public', express.static(__dirname + '/public'));
 
 
 
-app.listen(5000)
+app.listen(port)
