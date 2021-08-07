@@ -2,43 +2,56 @@ const mongoose = require('mongoose')
 
 
 const answerschema = new mongoose.Schema({
-    firstName: {
+    service: {
         type: String,
-        required: true
+        
     },
-    lastName: {
+    name: {
         type: String,
-        required:true
+       
     },
-   
-    nickName: {
-        type: String,
-        required: true
-    },
-    address: {
-        type: String,
-        required: true
-    },
-    state: {
-        type: String,
-        required: true
-    },
-    city: {
-        type: String,
-        required: true
-    },
-    zip: {
-        type: String,
-        required: true
-    },
-    phone: {
-        type: String,
-        required: true
-    },
-
     email: {
         type: String,
-        required: true
+    
+    },
+    type: {
+        type: String,
+        
+    },
+    design: {
+        type: String,
+    
+    },
+    rentabilite: {
+        type: String,
+       
+    },
+    
+
+    login: {
+        type: String,
+     
+    },
+
+    secteur: {
+        type: String,
+     
+    },
+    nbrpage: {
+        type: Number,
+  
+    },
+    infosupp1: {
+        type: String,
+      
+    },
+    infosupp2: {
+        type: String,
+      
+    },
+    typedev: {
+        type: String,
+     
     },
     createdAt: {
         type: Date,

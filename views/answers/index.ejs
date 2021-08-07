@@ -24,16 +24,24 @@
 
                 <div class="card-body">
                     <h4 class="card-title">
-                        <%= answer.firstName %>
+                      Nom Complet :   <%= answer.name %>
                     </h4>
-
+                     <hr class="my-4">
                     <h6 class="card-title">
-                        <%= answer.lastName %>
+                       Email :   <%= answer.email %>
+                    </h6>
+                    <hr class="my-4">
+                    <h6 class="card-title">
+                       Service Demandé :  <%= answer.service %>
                     </h6>
 
+                    <hr class="my-4">
+
                     <div class="card-subtitle text-muted mb-2">
-                        <%= answer.createdAt.toLocaleDateString() %>
+                      fait le :   <%= answer.createdAt.toLocaleDateString() %>
                     </div>
+
+                    <hr class="my-4">
                     
                   
                   

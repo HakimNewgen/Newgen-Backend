@@ -3,8 +3,15 @@ const router = express.Router()
 
 
 const Answer = require('../models/answer')
+// var fs = require('fs');
+// var pdf = require('html-pdf');
+// var html = fs.readFileSync('../views/answers/show', 'utf8');
+// var options = { format: 'Letter' };
 
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
+
+
+
 
 
 
@@ -53,16 +60,18 @@ router.put('/:id', async (req, res, next) => {
 function saveAnswerAndRedirect(path) {
     return async (req, res) => {
         let answer = req.answer
-        answer.firstName = req.body.firstName
-        answer.lastName = req.body.lastName
-        answer.nickName = req.body.nickName
-        answer.address = req.body.address
+        answer.service = req.body.service
+        answer.name = req.body.name
+        answer.secteur = req.body.secteur
+        answer.login = req.body.login
+        answer.type = req.body.type
 
-        answer.city = req.body.city
-        answer.state = req.body.state
+        answer.design = req.body.design
+        answer.nbrpage = req.body.nbrpage
+        
 
-        answer.zip = req.body.zip
-        answer.phone = req.body.phone
+        answer.infosupp1 = req.body.infosupp1
+        answer.infosupp2 = req.body.infosupp2
 
         answer.email = req.body.email
         
@@ -79,6 +88,20 @@ function saveAnswerAndRedirect(path) {
         }
     }
 }
+
+
+
+
+router.delete('/generate', async (req, res) => {
+    pdf.create(html, options).toFile('./businesscard.pdf', function (err, res) {
+        if (err) return console.log(err);
+        console.log(res); // { filename: '/app/businesscard.pdf' }
+    });
+})
+
+
+
+
 
 
 router.delete('/:id', async (req, res) => {
