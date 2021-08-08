@@ -58,15 +58,12 @@ app.set('view engine','ejs')
 app.get('/', async (req,res)=>{
    
     
-    res.render('home')
+    res.render('manage')
 })
 
 app.use('/', require('./routes/index'))
 app.use('/public', express.static(__dirname + '/public'));
 
-app.UseForwardedHeaders(new ForwardedHeadersOptions{
-        ForwardedHeaders = ForwardedHeaders.XForwardedProto
-    });
 
 
 

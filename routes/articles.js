@@ -1,7 +1,7 @@
 const express= require('express')
 
 const router = express.Router()
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const {  ensureGuest } = require('../middleware/auth')
 
 
 const multer = require('multer');
@@ -36,7 +36,7 @@ const upload = multer({
 
 
 
-router.get('/new', ensureAuth,(req,res)=>{
+router.get('/new', (req,res)=>{
     res.render('articles/new' , {article: new Article()})
 
     
@@ -44,7 +44,7 @@ router.get('/new', ensureAuth,(req,res)=>{
 })
 
 
-router.get('/', ensureAuth, async (req, res) => {
+router.get('/',  async (req, res) => {
     const articles = await Article.find().sort({ createdAt: 'desc' })
 
     res.render('articles/index',{articles: articles})
@@ -80,7 +80,7 @@ router.get('/data/:id', async (req, res) => {
 
 
 
-router.get('/:id', ensureAuth, async (req, res)=>{
+router.get('/:id',  async (req, res)=>{
      const article =  await Article.findById(req.params.id)
      if (article== null){res.redirect('/')}
     res.render('articles/show', { article: article})
@@ -141,7 +141,7 @@ function saveArticleAndRedirect(path) {
 
 
 
-router.get('/edit/:id', ensureAuth, async (req, res)=>{
+router.get('/edit/:id',  async (req, res)=>{
     const article= await Article.findById(req.params.id)
     res.render('articles/edit', {article: article})
 })

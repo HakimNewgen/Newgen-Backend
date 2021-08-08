@@ -8,7 +8,7 @@ const Answer = require('../models/answer')
 // var html = fs.readFileSync('../views/answers/show', 'utf8');
 // var options = { format: 'Letter' };
 
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const {  ensureGuest } = require('../middleware/auth')
 
 
 
@@ -18,13 +18,13 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 /*Admin Section  */
 
 
-router.get('/new', ensureAuth, (req, res) => {
+router.get('/new',  (req, res) => {
     res.render('answers/new', { answer: new Answer() })
 
 
 })
 
-router.get('/', ensureAuth, async (req, res) => {
+router.get('/',  async (req, res) => {
     const answers = await Answer.find().sort({ createdAt: 'desc' })
 
     res.render('answers/index', { answers: answers })
@@ -46,7 +46,7 @@ router.post('/', async (req, res, next) => {
 }, saveAnswerAndRedirect('new'))
 
 
-router.get('/edit/:id', ensureAuth, async (req, res) => {
+router.get('/edit/:id',  async (req, res) => {
     const answer = await Answer.findById(req.params.id)
     res.render('answers/edit', { answer: answer})
 })

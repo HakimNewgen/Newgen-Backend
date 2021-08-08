@@ -4,20 +4,20 @@ const router = express.Router()
 
 const Question = require('../models/question')
 
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const {  ensureGuest } = require('../middleware/auth')
 
 
 
 /*Admin Section  */
 
 
-router.get('/new', ensureAuth, (req, res) => {
+router.get('/new',  (req, res) => {
     res.render('questions/new', { question: new Question() })
 
 
 })
 
-router.get('/', ensureAuth, async (req, res) => {
+router.get('/',  async (req, res) => {
     const questions = await Question.find().sort({ createdAt: 'desc' })
 
     res.render('questions/index', { questions: questions })
@@ -39,7 +39,7 @@ router.post('/', async (req, res, next) => {
 }, saveQuestionAndRedirect('new'))
 
 
-router.get('/edit/:id', ensureAuth, async (req, res) => {
+router.get('/edit/:id',  async (req, res) => {
     const question = await Question.findById(req.params.id)
     res.render('questions/edit', { question: question })
 })
