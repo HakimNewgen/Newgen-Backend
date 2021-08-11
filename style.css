@@ -1,0 +1,12 @@
+@media screen and (max-width: 720px) {
+    .mygrid{
+      display: block;
+      width: 700px;
+    }
+    
+  }
+
+
+  .mygrid{
+    display: flex; width: 1200px; justify-content: space-between;
+  }
