@@ -14,7 +14,7 @@ const questionRouter = require('./routes/question')
 var cors = require('cors')
 
 const port = process.env.PORT || 5000
-const URI = process.env.MONGODBURI || 5000
+const URI = process.env.MONGODBURI 
 
 app.use(cors())
 
